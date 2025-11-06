@@ -5,3 +5,5 @@
     // Inserir o laço referente as aulas de PHP
 
     // Essa parte faremos juntos, pessoal, mas antes, vamos olhar o conn.php
+
+    echo "<h2>Testando antes de colocar a lista</h2>";
