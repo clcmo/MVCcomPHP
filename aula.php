@@ -13,10 +13,6 @@ class Aula extends Database {
     public $ordem;
     public $professor_id;
 
-    public function __construct($db) {
-        $this->conn = $db;
-    }
-
     public function listarTodas() {
         $query = "SELECT a.*, u.nome as professor_nome 
                   FROM " . $this->table . " a

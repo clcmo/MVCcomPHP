@@ -11,10 +11,6 @@ class Comentario extends Database {
     public $aluno_id;
     public $comentario;
 
-    public function __construct($db) {
-        $this->conn = $db;
-    }
-
     public function listarPorAula() {
         $query = "SELECT c.*, u.nome as aluno_nome, u.email as aluno_email
                   FROM " . $this->table . " c
