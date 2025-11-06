@@ -9,18 +9,15 @@ class Database {
 
     private $conn;
 
-    private $sql = "CREATE DATABASE IF NOT EXISTS " . $db;
-
     public function connect() {
         $this->conn = null;
         try {
             $this->conn = new PDO(
-                "mysql:host=" . $this->host,
+                "mysql:host=" . $this->host . ";charset=utf8",
                 $this->user,
                 $this->pass
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->exec("SET NAMES utf8");
         } catch(PDOException $e) {
             echo "Erro na conexão: " . $e->getMessage();
         }
@@ -30,10 +27,11 @@ class Database {
     public function createDatabase() {
         try {
             $conn = $this->connect();
-            
-            $conn->exec($this->sql);
-            $conn->exec("USE " . $this->db);
-            
+
+            // Aqui está o SQL que antes estava errado
+            $conn->exec("CREATE DATABASE IF NOT EXISTS `{$this->db}`");
+            $conn->exec("USE `{$this->db}`");
+
             $conn->exec("CREATE TABLE IF NOT EXISTS usuarios (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 nome VARCHAR(100) NOT NULL,
@@ -76,25 +74,32 @@ class Database {
     public function insertSampleData() {
         try {
             $conn = $this->connect();
-            $conn->exec("USE " . $this->db);
+            $conn->exec("USE `{$this->db}`");
 
             $result = $conn->query("SELECT COUNT(*) FROM usuarios");
             if($result->fetchColumn() > 0) return true;
 
             $senha_hash = password_hash('senha123', PASSWORD_DEFAULT);
 
+            // Professora
             $conn->exec("INSERT INTO usuarios (nome, email, senha, tipo) VALUES
             ('Professora Camila Leite', 'camila@escola.com', '$senha_hash', 'professor')");
 
+            // Alunos
             $conn->exec("INSERT INTO usuarios (nome, email, senha, tipo) VALUES
             ('João Pedro Santos', 'joao@aluno.com', '$senha_hash', 'aluno'),
             ('Ana Costa Lima', 'ana@aluno.com', '$senha_hash', 'aluno'),
             ('Carlos Souza', 'carlos@aluno.com', '$senha_hash', 'aluno'),
             ('Beatriz Oliveira', 'beatriz@aluno.com', '$senha_hash', 'aluno')");
 
+            // Aula exemplo (corrigido)
+            $conteudo = "Este é um conteúdo de exemplo para a aula de formulários e métodos GET/POST.";
             $conn->exec("INSERT INTO aulas (titulo, descricao, conteudo, ordem, professor_id) VALUES
-            ('Formulários e Métodos GET/POST',teste.php, 7, 1);");
-
+            ('Formulários e Métodos GET/POST',
+            'Capturando dados e entendendo o fluxo do formulário',
+            '$conteudo',
+            1,
+            1)");
 
             return true;
 
