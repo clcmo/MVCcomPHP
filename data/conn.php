@@ -92,12 +92,9 @@ class Database {
             ('Carlos Souza', 'carlos@aluno.com', '$senha_hash', 'aluno'),
             ('Beatriz Oliveira', 'beatriz@aluno.com', '$senha_hash', 'aluno')");
 
-            // Corrigida a linha problemática ↓↓↓
             $conn->exec("INSERT INTO aulas (titulo, descricao, conteudo, ordem, professor_id) VALUES
-            ('Formulários e Métodos GET/POST',
-             'Capturando dados de formulários HTML com PHP',
-             'PHP é excelente para processar dados de formulários.\n\n<form method=\"POST\" action=\"processar.php\">\n<input type=\"text\" name=\"nome\">\n<button type=\"submit\">Enviar</button>\n</form>\n\nPHP (processar.php):\n$nome = htmlspecialchars($_POST[\"nome\"]);\necho \"Nome recebido: \" . $nome;',
-             7, 1)");
+            ('Formulários e Métodos GET/POST',teste.php, 7, 1);");
+
 
             return true;
 
