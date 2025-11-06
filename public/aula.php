@@ -1,5 +1,5 @@
 <?php
-    require_once '../data/conn.php';
+    require_once '/data/conn.php';
     
 class Aula {
     private $conn;

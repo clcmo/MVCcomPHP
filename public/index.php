@@ -1,6 +1,6 @@
 <?php
     // Peço pra saber se conectou com a base de dados e mostrar na tela
-    require_once('../data/conn.php');
+    require_once('/data/conn.php');
 
     // Inserir o laço referente as aulas de PHP
 
