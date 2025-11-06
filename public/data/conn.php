@@ -6,21 +6,21 @@ class Database {
     
     // Declarando variaveis de conexão
 
-    $host = 'localhost';
-    $user = 'admin';
-    $pass = '';
+    private $host = 'localhost';
+    private $user = 'admin';
+    private $pass = '';
 
-    $conn = new mysqli($host, $user, $pass);
+    private $conn = new mysqli($host, $user, $pass);
 
     // Declarando a variavel que será a nossa base de dados.
-    $db = 'db_aula';
+    private $db = 'db_aula';
 
     // Porque fiz isso?
 
     // 1. Posso fazer com que a conexão e a verificação do BD sejam separadas
     // 2. Se não houver a criação deste BD, eu posso solicitar por meio de um script SQL
 
-    $sql = "CREATE DATABASE IF NOT EXISTS $db";
+    private $sql = "CREATE DATABASE IF NOT EXISTS $db";
 
     // 3. Com isso, posso fazer os processos, utilizando o if/else para depois encaminhar ao login.
 
@@ -39,8 +39,6 @@ class Database {
         }
         return $this->conn;
     }
-
-    return $conn;
 
     // Função Create Database fará com que eu crie a base de dados e também a estruturação do Banco.
     public function createDatabase() {
@@ -150,7 +148,7 @@ class Database {
                 
                 ('Formulários e Métodos GET/POST', 
                  'Capturando dados de formulários HTML com PHP', 
-                 'PHP é excelente para processar dados de formulários HTML.\n\nNesta aula aprenderemos:\n- Diferença entre GET e POST\n- Capturando dados com $_GET e $_POST\n- Validação básica de dados\n- Sanitização de entradas do usuário\n- htmlspecialchars() para prevenir XSS\n- Boas práticas de segurança\n\nExemplo de formulário:\n<form method=\"POST\" action=\"processar.php\">\n    <input type=\"text\" name=\"nome\">\n    <button type=\"submit\">Enviar</button>\n</form>\n\nPHP (processar.php):\n$nome = htmlspecialchars($_POST[\"nome\"]);\necho \"Nome recebido: \" . $nome;\n\nNunca confie em dados do usuário sem validação!', 
+                 'PHP é excelente para processar dados de formulários HTML.\n\nNesta aula aprenderemos:\n- Diferença entre GET e POST\n- Capturando dados com $_GET e $_POST\n- Validação básica de dados\n- Sanitização de entradas do usuário\n- htmlspecialchars() para prevenir XSS\n- Boas práticas de segurança\n\nExemplo de formulário:\n<form method=\"POST\" action=\"processar.php\">\n    <input type=\"text\" name=\"nome\">\n    <button type=\"submit\">Enviar</button>\n</form>\n\nPHP (processar.php):\n$nome = htmlspecialchars($_POST[\"nome"\]);\necho \"Nome recebido: \" . $nome;\n\nNunca confie em dados do usuário sem validação!', 
                  7, 1),
                 
                 ('Introdução a Banco de Dados MySQL', 
