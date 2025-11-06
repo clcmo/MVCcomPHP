@@ -8,7 +8,7 @@ class Database {
     private $pass = '';
 
     // Segundo, definir db_aula como nome da nossa base de dados
-    private $db   = 'db_aula';
+    protected $db   = 'db_aula';
 
     // Variavel de conexão precisa ser acessada pelas classes de modelo
     protected $conn;

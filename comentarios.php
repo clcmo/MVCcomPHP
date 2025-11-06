@@ -3,7 +3,6 @@
 require_once __DIR__ . '/data/conn.php';
     
 class Comentario extends Database {
-    private $conn;
     private $table = 'comentarios';
 
     public $id;
@@ -12,6 +11,9 @@ class Comentario extends Database {
     public $comentario;
 
     public function listarPorAula() {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+
         $query = "SELECT c.*, u.nome as aluno_nome, u.email as aluno_email
                   FROM " . $this->table . " c
                   LEFT JOIN usuarios u ON c.aluno_id = u.id
@@ -25,6 +27,9 @@ class Comentario extends Database {
     }
 
     public function criar() {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+
         $query = "INSERT INTO " . $this->table . "
                   (aula_id, aluno_id, comentario)
                   VALUES
@@ -40,6 +45,9 @@ class Comentario extends Database {
     }
 
     public function deletar() {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+
         $query = "DELETE FROM " . $this->table . " WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $this->id);
@@ -47,6 +55,9 @@ class Comentario extends Database {
     }
 
     public function contarPorAula() {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+
         $query = "SELECT COUNT(*) as total FROM " . $this->table . " 
                   WHERE aula_id = :aula_id";
         
@@ -59,6 +70,9 @@ class Comentario extends Database {
     }
 
     public function listarRecentes($limite = 5) {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+        
         $query = "SELECT c.*, a.titulo as aula_titulo, u.nome as aluno_nome
                   FROM " . $this->table . " c
                   LEFT JOIN aulas a ON c.aula_id = a.id

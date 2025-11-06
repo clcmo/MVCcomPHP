@@ -3,7 +3,6 @@
 require_once __DIR__ . '/data/conn.php';
     
 class Aula extends Database {
-    private $conn;
     private $table = 'aulas';
 
     public $id;
@@ -14,6 +13,9 @@ class Aula extends Database {
     public $professor_id;
 
     public function listarTodas() {
+        $conn = $this->connect();
+        $conn->exec("USE " . $this->db);
+
         $query = "SELECT a.*, u.nome as professor_nome 
                   FROM " . $this->table . " a
                   LEFT JOIN usuarios u ON a.professor_id = u.id
