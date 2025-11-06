@@ -147,14 +147,15 @@ class Database {
                  6, 1),
                 
                 ('Formulários e Métodos GET/POST', 
-                 'Capturando dados de formulários HTML com PHP', 
-                 'PHP é excelente para processar dados de formulários HTML.\n\nNesta aula aprenderemos:\n- Diferença entre GET e POST\n- Capturando dados com $_GET e $_POST\n- Validação básica de dados\n- Sanitização de entradas do usuário\n- htmlspecialchars() para prevenir XSS\n- Boas práticas de segurança\n\nExemplo de formulário:\n<form method=\"POST\" action=\"processar.php\">\n    <input type=\"text\" name=\"nome\">\n    <button type=\"submit\">Enviar</button>\n</form>\n\nPHP (processar.php):\n$nome = htmlspecialchars($_POST[\"nome"\]);\necho \"Nome recebido: \" . $nome;\n\nNunca confie em dados do usuário sem validação!', 
-                 7, 1),
+                'Capturando dados de formulários HTML com PHP', 
+                'PHP é excelente para processar dados de formulários HTML.\n\nNesta aula aprenderemos:\n- Diferença entre GET e POST\n- Capturando dados com $_GET e $_POST\n- Validação básica de dados\n- Sanitização de entradas do usuário\n- htmlspecialchars() para prevenir XSS\n- Boas práticas de segurança\n\nExemplo de formulário:\n\n<form method=\"POST\" action=\"processar.php\">\n    <input type=\"text\" name=\"nome\" placeholder=\"Digite seu nome\">\n    <button type=\"submit\">Enviar</button>\n</form>\n\nPHP (processar.php):\n$nome = htmlspecialchars($_POST[\"nome\"]);\necho \"Nome recebido: \" . $nome;\n\nNunca confie em dados do usuário sem validação!', 
+                7, 1),
                 
                 ('Introdução a Banco de Dados MySQL', 
-                 'Conectando PHP com MySQL e operações básicas', 
-                 'MySQL é o banco de dados mais usado com PHP.\n\nNesta aula veremos:\n- O que são bancos de dados relacionais\n- Instalação e configuração do MySQL\n- Conexão com PDO (PHP Data Objects)\n- Operações CRUD: Create, Read, Update, Delete\n- SQL básico: SELECT, INSERT, UPDATE, DELETE\n- Prepared Statements para segurança\n\nExemplo de conexão:\n$pdo = new PDO(\"mysql:host=localhost;dbname=escola\", \"root\", \"\");\n\nExemplo de consulta:\n$stmt = $pdo->query(\"SELECT * FROM alunos\");\nforeach($stmt as $row) {\n    echo $row[\"nome\"];\n}\n\nBancos de dados permitem armazenar e recuperar informações de forma persistente.', 
-                 8, 1)");
+                'Conectando PHP com MySQL e operações básicas', 
+                'MySQL é o banco de dados mais usado com PHP.\n\nNesta aula veremos:\n- O que são bancos de dados relacionais\n- Instalação e configuração do MySQL\n- Conexão com PDO (PHP Data Objects)\n- Operações CRUD: Create, Read, Update, Delete\n- SQL básico: SELECT, INSERT, UPDATE, DELETE\n- Prepared Statements para segurança\n\nExemplo de conexão:\n$pdo = new PDO(\"mysql:host=localhost;dbname=escola\", \"root\", \"\");\n\nExemplo de consulta:\n$stmt = $pdo->query(\"SELECT * FROM alunos\");\nforeach($stmt as $row) {\n    echo $row[\"nome\"];\n}\n\nBancos de dados permitem armazenar e recuperar informações de forma persistente.', 
+                8, 1);
+                ");
             
             // Inserir comentários de exemplo
             $conn->exec("INSERT INTO comentarios (aula_id, aluno_id, comentario) VALUES
