@@ -1,5 +1,6 @@
 <?php
-    require_once '/data/conn.php';
+// Conexão com o banco
+require_once __DIR__ . '/data/conn.php';
     
 class Comentario {
     private $conn;
