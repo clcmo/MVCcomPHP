@@ -1,4 +1,4 @@
-# MVC com PHP
+# 📚 Sistema de Aulas PHP - MVC Modular
 
 [![GitHub license](https://img.shields.io/github/license/clcmo/MVCcomPHP?style=for-the-badge)](https://github.com/clcmo/MVCcomPHP)
 [![GitHub stars](https://img.shields.io/github/stars/clcmo/MVCcomPHP?style=for-the-badge)](https://github.com/clcmo/MVCcomPHP/stargazers)
@@ -6,129 +6,127 @@
 [![GitHub issues](https://img.shields.io/github/issues/clcmo/MVCcomPHP?style=for-the-badge)](https://github.com/clcmo/MVCcomPHP/issues)
 [![GitHub donate](https://img.shields.io/github/sponsors/clcmo?color=pink&style=for-the-badge)](https://github.com/sponsors/clcmo)
 
-## 📁 Estrutura do Sistema:
+Sistema completo de gestão de aulas desenvolvido em PHP com arquitetura MVC modular.
 
-### **Arquivo 1: Sistema Principal** (config.php + classes)
+## ✨ Funcionalidades
 
-Contém:
+- ✅ CRUD completo de aulas
+- ✅ Sistema de comentários
+- ✅ Navegação entre aulas
+- ✅ Dashboard com estatísticas
+- ✅ Design responsivo e moderno
+- ✅ Instalador automático
+- ✅ Arquitetura MVC profissional
 
-- ✅ **Classe Database** - Com método `createDatabase()` para criar BD e tabelas
-- ✅ **Método `insertSampleData()`** - Insere dados de exemplo
-- ✅ **Classe Aula** - CRUD completo + navegação entre aulas
-- ✅ **Classe Comentario** - Gerenciamento de comentários
-- ✅ **install.php** - Interface visual para instalação
+## 🚀 Tecnologias
 
-### **Arquivo 2: Páginas** (index.php + aula.php)
+- PHP 7.4+
+- MySQL 5.7+
+- PDO para banco de dados
+- Autoloading PSR-4
+- CSS3 com Grid e Flexbox
 
-Contém:
+## 📦 Instalação
 
-- ✅ **index.php** - Lista todas as aulas com design moderno
-- ✅ **aula.php** - Visualização completa da aula com comentários
-- ✅ Navegação entre aulas (anterior/próxima)
-- ✅ Atividade recente na sidebar
+### 1. Clone o repositório
 
-## 🚀 Como Instalar:
+```bash
+git clone https://github.com/clcmo/MVCcomPHP.git
+cd MVCcomPHP
+```
 
-### **Passo 1:** Salvar os arquivos
+### 2. Configure o banco de dados
+
+Edite o arquivo `.env`:
+```env
+DB_HOST=localhost
+DB_NAME=sistema_aulas
+DB_USER=root
+DB_PASS=sua_senha
+```
+
+### 3. Execute o instalador
+
+Acesse: `http://localhost/MVCcomPHP/public/install`
+
+### 4. Acesse o sistema
+
+`http://localhost/MVCcomPHP/public/`
+
+## 📁 Estrutura do Projeto
 
 ```
 MVCcomPHP/
-├── public/
-│   ├── index.php                  # Ponto de entrada único
-│   ├── install.php                # Instalador (mantido aqui)
-│   ├── assets/
-│   │   ├── css/
-│   │   │   └── style.css
-│   │   ├── js/
-│   │   │   └── app.js
-│   │   └── images/
-│   └── .htaccess
 ├── app/
-│   ├── Controllers/
-│   │   ├── AulaController.php     # Lógica de aulas
-│   │   ├── ComentarioController.php
-│   │   ├── InstallController.php
-│   │   └── BaseController.php
-│   ├── Models/
-│   │   ├── Aula.php               # Model de Aula
-│   │   ├── Comentario.php         # Model de Comentário
-│   │   ├── Usuario.php            # Model de Usuário
-│   │   └── BaseModel.php
-│   ├── Views/
-│   │   ├── layouts/
-│   │   │   ├── header.php
-│   │   │   ├── footer.php
-│   │   │   └── main.php
-│   │   ├── aulas/
-│   │   │   ├── index.php          # Lista de aulas
-│   │   │   └── show.php           # Visualização da aula
-│   │   ├── install/
-│   │   │   └── index.php
-│   │   └── partials/
-│   │       ├── sidebar.php
-│   │       └── comentarios.php
-│   ├── Core/
-│   │   ├── Database.php           # Conexão com banco
-│   │   ├── Controller.php         # Controller base
-│   │   ├── Model.php              # Model base
-│   │   └── Router.php             # Sistema de rotas
-│   ├── Config/
-│   │   ├── database.php
-│   │   └── app.php
-│   └── Helpers/
-│       └── functions.php
-├── storage/
-│   └── logs/
-├── composer.json
-└── .env
+│   ├── Controllers/    # Lógica de negócio
+│   ├── Models/         # Camada de dados
+│   ├── Views/          # Interface do usuário
+│   ├── Core/           # Classes fundamentais
+│   ├── Config/         # Configurações
+│   └── Helpers/        # Funções auxiliares
+├── public/             # Arquivos públicos
+│   ├── assets/         # CSS, JS, imagens
+│   └── index.php       # Ponto de entrada
+└── storage/            # Logs e cache
 ```
 
-### **Passo 2:** Configurar credenciais
+## 🎯 Uso
 
-Edite em `config.php`:
+### Listar todas as aulas
 
 ```php
-private $host = 'localhost';
-private $username = 'root';
-private $password = ''; // Sua senha do MySQL
+$aulaController = new AulaController();
+$aulaController->index();
 ```
 
-### **Passo 3:** Executar instalação
+### Ver uma aula específica
 
-1. Acesse: `http://localhost/MVCcomPHP/install.php`
-2. O sistema irá:
-   - ✅ Criar banco de dados `bd_aulas`
-   - ✅ Criar 3 tabelas (usuarios, aulas, comentarios)
-   - ✅ Inserir dados de exemplo (1 professora, 4 alunos, 8 aulas, 9 comentários)
-3. Clicar em "Ir para o Sistema"
+```php
+$aulaController->show($id);
+```
 
-### **Passo 4:** Usar o sistema
+### Adicionar comentário
 
-- Acesse `index.php` para ver todas as aulas
-- Clique em qualquer aula para ver conteúdo completo
-- Comente nas aulas (sistema simula login automático)
+```php
+$aulaController->addComment();
+```
 
-## ✨ Recursos Implementados:
+## 🛠️ Desenvolvimento
 
-- 🔐 **Criação automática do BD** via PHP
-- 📊 **8 aulas completas** de PHP com conteúdo real
-- 💬 **Sistema de comentários** funcional
-- 🎨 **Design moderno** e responsivo
-- ⬅️➡️ **Navegação** entre aulas
-- 📈 **Dashboard** com estatísticas
-- 🔒 **Segurança**: PDO, prepared statements, htmlspecialchars
-- 📱 **Responsivo** para mobile
+### Adicionar nova rota
 
-**Dados de teste incluídos:**
+```php
+// public/index.php
+$router->get('/nova-rota', 'SeuController', 'suaAction');
+```
 
-- Email: `joao@aluno.com` / Senha: `senha123`
+### Criar novo Model
 
-O sistema está 100% funcional e pronto para uso! 🎉
+```php
+namespace App\Models;
 
-### Pré-requisitos
+use App\Core\Database;
 
-PHP, SQL e servidor Apache instalados (por meio do WAMP/XAMP ou Laragon)
+class SeuModel {
+    private $db;
+    
+    public function __construct() {
+        $this->db = Database::getInstance()->getConnection();
+    }
+}
+```
 
-## Contribuindo
+## 📖 Documentação
 
-Instruções para contribuir com o projeto.
+- [Guia de Contribuição](CONTRIBUTING.md)
+- [Licença MIT](LICENSE)
+
+## 👤 Autor
+
+**clcmo**
+
+- GitHub: [@clcmo](https://github.com/clcmo)
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
