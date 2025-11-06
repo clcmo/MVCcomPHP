@@ -10,7 +10,8 @@ class Database {
     // Segundo, definir db_aula como nome da nossa base de dados
     private $db   = 'db_aula';
 
-    private $conn;
+    // Variavel de conexão precisa ser acessada pelas classes de modelo
+    protected $conn;
 
     // Terceiro, criar a conexão, apenas com as credenciais de acesso.
     public function connect() {

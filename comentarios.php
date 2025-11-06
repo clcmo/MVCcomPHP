@@ -2,7 +2,7 @@
 // Conexão com o banco
 require_once __DIR__ . '/data/conn.php';
     
-class Comentario {
+class Comentario extends Database {
     private $conn;
     private $table = 'comentarios';
 

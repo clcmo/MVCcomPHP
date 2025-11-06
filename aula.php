@@ -2,7 +2,7 @@
 // Conexão com o banco
 require_once __DIR__ . '/data/conn.php';
     
-class Aula {
+class Aula extends Database {
     private $conn;
     private $table = 'aulas';
 
