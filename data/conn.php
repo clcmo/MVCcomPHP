@@ -2,13 +2,17 @@
 
 class Database {
     
+    // Primeiro: Definir as variaveis de acesso local, depois pensamos na nuvem
     private $host = 'localhost';
     private $user = 'admin';
     private $pass = '';
+
+    // Segundo, definir db_aula como nome da nossa base de dados
     private $db   = 'db_aula';
 
     private $conn;
 
+    // Terceiro, criar a conexão, apenas com as credenciais de acesso.
     public function connect() {
         $this->conn = null;
         try {
@@ -24,6 +28,7 @@ class Database {
         return $this->conn;
     }
 
+    // Quarto, criar a base de dados que vamos usar e as entidades
     public function createDatabase() {
         try {
             $conn = $this->connect();
@@ -71,6 +76,7 @@ class Database {
         }
     }
 
+    // Quinto, já colocarmos um conteúdo simples pra dizer que... temos um conteúdo
     public function insertSampleData() {
         try {
             $conn = $this->connect();
