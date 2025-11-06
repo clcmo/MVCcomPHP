@@ -9,7 +9,7 @@ class Database {
 
     private $conn;
 
-    private $sql = "CREATE DATABASE IF NOT EXISTS {$this->db}";
+    private $sql = "CREATE DATABASE IF NOT EXISTS " . $db;
 
     public function connect() {
         $this->conn = null;
